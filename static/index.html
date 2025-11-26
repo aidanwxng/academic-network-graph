@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Academic Networking Graph</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/vis-network/styles/vis-network.min.css"
+  />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, sans-serif;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    header {
+      background: #0f172a;
+      color: white;
+      padding: 0.7rem 1rem;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    header input {
+      padding: 0.35rem;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 0.4rem 0.7rem;
+      background: #2563eb;
+      border: none;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    #main {
+      display: flex;
+      flex: 1;
+      height: calc(100vh - 60px);
+    }
+
+    #graph {
+      flex: 3;
+    }
+
+    #side {
+      flex: 1;
+      padding: 1rem;
+      overflow-y: auto;
+      border-left: 1px solid #ddd;
+    }
+
+    /* Loader */
+    .loader {
+      border: 5px solid #f3f3f3;
+      border-top: 5px solid #2563eb;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 0.7s linear infinite;
+      margin: 20px auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <input id="search-input" type="text" placeholder="Search for researcher...">
+  <button id="search-button">Search</button>
+
+  <label>
+    Degrees:
+    <input id="degree-input" type="number" min="1" max="3" value="1" style="width:3rem;">
+  </label>
+
+  <input id="path-start" type="text" placeholder="Author A (ID)">
+  <input id="path-end" type="text" placeholder="Author B (ID)">
+  <button id="path-button">Shortest Path</button>
+</header>
+
+<div id="main">
+  <div id="graph"></div>
+
+  <div id="side">
+    <h2>Details</h2>
+    <div id="info">Search for an author to begin.</div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
